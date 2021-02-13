@@ -23,31 +23,30 @@ public class Radio {
     }
 
     public void nextRadioStation() {
-        int currentRadioStation = this.getCurrentRadioStation();
         if (currentRadioStation == endRadioStation) {
-            this.currentRadioStation = firstRadioStation;
+            currentRadioStation = firstRadioStation;
             return;
         }
-        this.currentRadioStation++;
+        currentRadioStation++;
     }
 
     public void prevRadioStation() {
-        int currentRadioStation = this.getCurrentRadioStation();
         if (currentRadioStation == firstRadioStation) {
-            this.currentRadioStation = endRadioStation;
+            currentRadioStation = endRadioStation;
             return;
         }
-        this.currentRadioStation--;
+        currentRadioStation--;
     }
 
     public void putRadioStation(int radioStation){
+
         if (radioStation > endRadioStation){
             return;
         }
         if (radioStation < firstRadioStation){
             return;
         }
-        this.currentRadioStation = radioStation;
+        currentRadioStation = radioStation;
     }
 
     public int getCurrentVolume() {
@@ -65,18 +64,16 @@ public class Radio {
     }
 
     public void plusVolume (){
-        int currentVolume = this.getCurrentVolume();
         if (currentVolume >= maxVolume){
             return;
         }
-        this.currentVolume++;
+        currentVolume++;
     }
 
     public void minusVolume (){
-        int currentVolume = this.getCurrentVolume();
         if (currentVolume <= minVolume){
             return;
         }
-        this.currentVolume--;
+        currentVolume--;
     }
 }
