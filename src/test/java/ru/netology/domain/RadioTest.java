@@ -6,34 +6,34 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
 
-    Radio radio = new Radio();
+    Radio radio = new Radio(0,0,10,0,0,100);
 
     @Test
-    public void pressNextStationIfCurrentMax() {
-        int currentRadioStation = 9;
+    public void pressNextStationIfCurrentMax(){
+        int currentRadioStation = 10;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.nextRadioStation();
         assertEquals(0, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void pressNextStationIfCurrentOverMax() {
-        int currentRadioStation = 10;
+    public void pressNextStationIfCurrentOverMax(){
+        int currentRadioStation = 11;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.nextRadioStation();
         assertEquals(1, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void pressPrevStationIfCurrentUnderMin() {
+    public void pressPrevStationIfCurrentUnderMin(){
         int currentRadioStation = -1;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.prevRadioStation();
-        assertEquals(9, radio.getCurrentRadioStation());
+        assertEquals(10, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void pressPrevStationIfValidCurrentValue() {
+    public void pressPrevStationIfValidCurrentValue(){
         int currentRadioStation = 5;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.prevRadioStation();
@@ -41,7 +41,7 @@ public class RadioTest {
     }
 
     @Test
-    public void setUpStationValidValue() {
+    public void setUpStationValidValue(){
         int radioStation = 1;
         int currentRadioStation = 5;
         radio.setCurrentRadioStation(currentRadioStation);
@@ -50,8 +50,8 @@ public class RadioTest {
     }
 
     @Test
-    public void setUpStationOverMax() {
-        int radioStation = 10;
+    public void setUpStationOverMax(){
+        int radioStation = 11;
         int currentRadioStation = 5;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.putRadioStation(radioStation);
@@ -59,7 +59,7 @@ public class RadioTest {
     }
 
     @Test
-    public void setUpStationUnderMin() {
+    public void setUpStationUnderMin(){
         int radioStation = -1;
         int currentRadioStation = 5;
         radio.setCurrentRadioStation(currentRadioStation);
@@ -68,16 +68,16 @@ public class RadioTest {
     }
 
     @Test
-    public void makeLouderIfCurrentMax() {
-        int currentVolume = 10;
+    public void makeLouderIfCurrentMax(){
+        int currentVolume = 100;
         radio.setCurrentVolume(currentVolume);
         radio.plusVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
-    public void makeLouderIfCurrentOverMax() {
-        int currentVolume = 15;
+    public void makeLouderIfCurrentOverMax(){
+        int currentVolume = 105;
         radio.setCurrentVolume(currentVolume);
         radio.plusVolume();
         assertEquals(1, radio.getCurrentVolume());
@@ -85,7 +85,7 @@ public class RadioTest {
 
 
     @Test
-    public void makeQuieterIfValidCurrentValue() {
+    public void makeQuieterIfValidCurrentValue(){
         int currentVolume = 1;
         radio.setCurrentVolume(currentVolume);
         radio.minusVolume();
@@ -94,7 +94,7 @@ public class RadioTest {
 
 
     @Test
-    public void makeQuieterIfCurrentUnderMin() {
+    public void makeQuieterIfCurrentUnderMin(){
         int currentVolume = -5;
         radio.setCurrentVolume(currentVolume);
         radio.minusVolume();
